@@ -16,8 +16,7 @@ def scrape_data_with_bs4(url):
            except Exception as e:
                logger.error(f"Error parsing HTML for {url}: {e}")
        return None
-
-   def scrape_data_with_selenium(url):
+def scrape_data_with_selenium(url):
        try:
            driver = webdriver.Chrome()  # Adjust according to your setup
            driver.get(url)
