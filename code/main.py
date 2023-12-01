@@ -20,7 +20,7 @@ from concurrent.futures import ThreadPoolExecutor
            if selenium_data:
                data_to_save[f'selenium_data_{i}'] = selenium_data
 
-       save_data_to_hdf5(data_to_save, config.get('General', 'OutputFilename'))
+       save_data_to_hdf5(data_to_save, config.get('General', 'marketdata'))
 
    if __name__ == "__main__":
        alibaba_urls = ["https://www.alibaba.com/"]
