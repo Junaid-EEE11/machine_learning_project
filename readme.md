@@ -24,7 +24,7 @@ This repository contains the code and documentation for a machine learning proje
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/financial-market-prediction.git
+    git clone https://github.com/Junaid-EEE11/financial-market-prediction.git
     ```
 
 2. Install dependencies:
@@ -37,13 +37,13 @@ This repository contains the code and documentation for a machine learning proje
 
 ## Usage
 
-1. **Data Preparation**: Ensure you have relevant market data in a format compatible with the project. Update paths and configurations as needed in the code.
+1. **Data Preparation**: Market data in a (csv,text, json others) with the project.
 
-2. **Model Training**: Run the Jupyter Notebooks in the `/code` directory for data preprocessing and model training. Adjust hyperparameters and configurations based on your requirements.
+2. **Model Training**: Run the Jupyter Notebooks in the `/code` directory for data preprocessing and model training.
 
-3. **Model Deployment**: Follow the instructions in the `/code` directory to deploy the model in a real-world environment. Update configurations for integration with your market infrastructure.
+3. **Model Deployment**: Follow the instructions in the `/code` directory to deploy the model in a real-world environment.
 
-4. **Monitoring and Maintenance**: Implement continuous monitoring mechanisms as detailed in the documentation. Periodically retrain the model to adapt to changing market conditions.
+4. **Monitoring and Maintenance**: Implemented continuous monitoring mechanisms as detailed in the documentation. Periodically retrained the model to adapt to changing market conditions.
 
 ## Contributing
 
@@ -53,8 +53,4 @@ We welcome contributions! If you find any issues or have suggestions for improve
 
 This project is licensed under the [MIT License](LICENSE).
 
-## Acknowledgements
-
-- Mention any external libraries, datasets, or resources used in the project.
-- Credit contributors and cite relevant research papers if applicable.
 
