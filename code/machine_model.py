@@ -64,7 +64,7 @@ results = []
 names = []
 for name, model in models:
     kfold = StratifiedKFold(n_splits=10, random_state=1, shuffle=True)
-.  model.save('{%f}.joblib'.name)
+    model.save('{%f}.joblib'.name)
     cv_results = cross_val_score(model, X_train, Y_train, cv=kfold, scoring='accuracy')
     results.append(cv_results)
     names.append(name)

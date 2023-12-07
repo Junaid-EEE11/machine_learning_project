@@ -17,6 +17,6 @@ def make_realistic_request(url):
         return response.content
     except requests.exceptions.Timeout:
            logger.error(f"Request to {url} timed out.")
-     except requests.exceptions.RequestException as e:
-           logger.error(f"Error making request to {url}: {e}")
-       return None
+    except requests.exceptions.RequestException as e:
+        logger.error(f"Error making request to {url}: {e}")
+        return None

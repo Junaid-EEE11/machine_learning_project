@@ -1,31 +1,34 @@
-from bs4 import BeautifulSoup
-from selenium import webdriver
-from web_requests import make_realistic_request
-import logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+# scraper.py
+import multiprocessing
+from data_saver import save_to_csv
+from ecommerce_parser import EcommerceParser
 
-def scrape_data_with_bs4(url):
-       html_content = make_realistic_request(url)
-       if html_content:
-           try:
-               soup = BeautifulSoup(html_content, 'html.parser')
-               data = {}  # Placeholder for scraped data
-               # Add your scraping logic here based on Alibaba.com structure
-               return data
-           except Exception as e:
-               logger.error(f"Error parsing HTML for {url}: {e}")
-       return None
-def scrape_data_with_selenium(url):
-       try:
-           driver = webdriver.Chrome()  # Adjust according to your setup
-           driver.get(url)
-           data = {}  # Placeholder for scraped data
-           # Add your Selenium scraping logic here based on Alibaba.com structure
-           return data
-       except Exception as e:
-           logger.error(f"Error scraping with Selenium for {url}: {e}")
-       finally:
-           if 'driver' in locals():
-               driver.quit()
-       return None
+class EcommerceScraper:
+    def __init__(self, url, output_file, max_processes=1):
+        self.url = url
+        self.output_file = output_file
+        self.max_processes = max_processes
+
+    def run(self):
+        data = self.scrape()
+        save_to_csv(data, self.output_file)
+
+    def scrape(self):
+        parser = EcommerceParser(self.url)
+        product_links = parser.get_product_links()
+
+        with multiprocessing.Pool(self.max_processes) as pool:
+            data = pool.map(self.fetch_product_data, product_links)
+
+        return data
+
+    def fetch_product_data(self, product_link):
+        try:
+            parser = EcommerceParser(product_link)
+            product_data = parser.parse_product_data()
+            return product_data
+        except Exception as e:
+            print(f"Error fetching data for {product_link}: {e}")
+            return None
+
+# Add error handling, waiting, and other features as needed
